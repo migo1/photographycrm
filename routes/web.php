@@ -25,6 +25,10 @@ Route::prefix('admin')->group( function(){
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::group(['middleware' => ['auth:admin']], function() {
+        Route::resource('roles','RoleController');
+        Route::resource('users','UserController');
+    });
 
     //pasword reset routes
      Route::post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
@@ -38,6 +42,12 @@ Route::prefix('admin')->group( function(){
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//users
+Route::resource('dashboard', 'User\DashboardController');
+
+
 //admins
 
 Route::resource('admins_dashboard', 'Admin\DashboardController');
+Route::resource('categories', 'Admin\CategoryController');
+
