@@ -50,4 +50,5 @@ Route::resource('dashboard', 'User\DashboardController');
 
 Route::resource('admins_dashboard', 'Admin\DashboardController');
 Route::resource('categories', 'Admin\CategoryController');
+Route::resource('admin_galleries', 'Admin\GalleryController');
 

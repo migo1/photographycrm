@@ -4,15 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
+use App\User;
 
-class CategoryController extends Controller
+class GalleryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at','desc')->paginate(5);
-
-        return view('categories.index',compact('categories'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('galleries.index');
     }
 
     /**
@@ -43,12 +36,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category;
-
-        $category->name = $request->input('name');
-
-        $category->save();
-        return back();
+        //
     }
 
     /**
@@ -80,12 +68,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $category= Category::findOrFail($request->category_id);
-        $category->name = $request->input('name');
-        $category->update();
-        return back();
+        //
     }
 
     /**
@@ -94,10 +79,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $category = Category::findOrFail($request->category_id);
-        $category->delete();
-        return back();
+        //
     }
 }

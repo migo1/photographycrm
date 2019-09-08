@@ -154,7 +154,9 @@
                             <!-- End User Profile-->
                         </li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admins_dashboard.index') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admins_dashboard.index') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Categories</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('categories.index') }}" aria-expanded="false"><i class="mdi mdi-bookmark-check"></i><span class="hide-menu">Categories</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('categories.index') }}" aria-expanded="false"><i class="mdi mdi-image-filter"></i><span class="hide-menu">Customers Gallery</span></a></li>
+
 
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Multi level dd</span></a>
                             <ul aria-expanded="false" class="collapse first-level">
@@ -224,7 +226,7 @@
                         <!-- Sidebar -->
                         <h5 class="font-medium m-b-10 m-t-10">Layout Settings</h5>
                         <div class="custom-control custom-checkbox m-t-10">
-                            <input type="checkbox" class="custom-control-input" name="theme-view" id="theme-view">
+                            <input type="checkbox" class="custom-control-input" name="theme-view" id="theme-view" checked=''>
                             <label class="custom-control-label" for="theme-view">Dark Theme</label>
                         </div>
                         <div class="custom-control custom-checkbox m-t-10">

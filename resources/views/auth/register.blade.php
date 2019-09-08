@@ -72,6 +72,18 @@
                             @endif
                                     </div>
                                 </div>
+
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg{{ $errors->has('DOB') ? ' is-invalid' : '' }}" type="text" name="DOB" placeholder="date of Birth" value="{{ old('DOB') }}" required autofocus>
+                                        @if ($errors->has('DOB'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('DOB') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Password" required>
