@@ -11,8 +11,11 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Xtreme admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    <title>Picturesque</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    
+
+    @yield('links')
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
 
@@ -91,17 +94,37 @@
                     <ul class="navbar-nav float-right">
                      
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                                @php
+                                $pic_url =  asset('./assets/images/users/1.jpg');
+                                if(auth()->user()->profiles){
+                                    $pic_url =  "/public/cover_images/".auth()->user()->profiles->image;
+                               }
+                
+                            @endphp
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ $pic_url }}" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow"><span class="bg-primary"></span></span>
                                 <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-                                    <div class=""><img src="../../assets/images/users/1.jpg" alt="user" class="img-circle" width="60"></div>
+
+                                        @php
+                                        $pic_url =  asset('./assets/images/users/1.jpg');
+                                        if(auth()->user()->profiles){
+                                            $pic_url =  "/public/cover_images/".auth()->user()->profiles->image;
+                                       }
+                        
+                                    @endphp
+
+                                    <div class=""><img src="{{ $pic_url }}" alt="user" class="img-circle" width="60"></div>
                                     <div class="m-l-10">
                                     <h4 class="m-b-0">{{ auth()->user()->name }}</h4>
                                         <p class=" m-b-0">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+
+                                @php
+                                 $id = auth()->user()->id;  
+                                @endphp
+                                <a class="dropdown-item" href="/profiles/{{ $id}}"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -138,7 +161,15 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="../../assets/images/users/1.jpg" alt="users" class="rounded-circle" width="40" /></div>
+
+                                    @php
+                                    $pic_url =  asset('./assets/images/users/1.jpg');
+                                    if(auth()->user()->profiles){
+                                        $pic_url =  "/public/cover_images/".auth()->user()->profiles->image;
+                                   }
+                    
+                                @endphp
+                                <div class="user-pic"><img src="{{  $pic_url }}" alt="users" class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">{{ auth()->user()->name }} <i class="fa fa-angle-down"></i></h5>
@@ -153,9 +184,9 @@
                             </div>
                             <!-- End User Profile-->
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="ti-loop"></i><span class="hide-menu">Back To Home</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Multi level dd</span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calendar') }}" aria-expanded="false"><i class="mdi mdi-calendar"></i><span class="hide-menu">Calendar</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('gallery.index') }}" aria-expanded="false"><i class="mdi mdi-image-filter"></i><span class="hide-menu">Gallery</span></a></li>
+                        <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-octagram"></i><span class="hide-menu"> item 1.1</span></a></li>
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-octagram"></i><span class="hide-menu"> item 1.2</span></a></li>
                                 <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-playlist-plus"></i> <span class="hide-menu">Menu 1.3</span></a>
@@ -195,6 +226,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap tether Core JavaScript -->
+    
     <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- apps -->
@@ -210,6 +242,7 @@
     <script src="{{ asset('dist/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js')}}"></script>
+    @yield('scripts')
 </body>
 
 </html>

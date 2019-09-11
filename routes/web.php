@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,8 @@
 |
 */
 
+//use Symfony\Component\Routing\Annotation\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,6 +24,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/logout','Auth\LoginController@userLogout')->name('user.logout');
+Route::resource('profiles', 'ProfileController');
+Route::resource('bookings', 'BookingController');
+Route::resource('gallery', 'GalleryController');
+Route::get('/calendar', 'CalendarController@index')->name('calendar');
 
 Route::prefix('admin')->group( function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -51,4 +60,5 @@ Route::resource('dashboard', 'User\DashboardController');
 Route::resource('admins_dashboard', 'Admin\DashboardController');
 Route::resource('categories', 'Admin\CategoryController');
 Route::resource('admin_galleries', 'Admin\GalleryController');
+Route::get('chart', 'ChartController@index')->name('charts');
 

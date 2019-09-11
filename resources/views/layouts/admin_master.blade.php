@@ -11,8 +11,10 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Xtreme admin Template - The Ultimate Multipurpose admin template</title>
-	<link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    <title>Picturesque</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    
+    @yield('links')
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
 
@@ -101,8 +103,6 @@
                                         <p class=" m-b-0">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                <div class="dropdown-divider"></div>
                                 <div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -144,18 +144,14 @@
                                         <h5 class="m-b-0 user-name font-medium">{{ auth()->user()->name }} <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">{{ auth()->user()->email }}</span>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                    </div>
                                 </div>
                             </div>
                             <!-- End User Profile-->
                         </li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admins_dashboard.index') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('categories.index') }}" aria-expanded="false"><i class="mdi mdi-bookmark-check"></i><span class="hide-menu">Categories</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('categories.index') }}" aria-expanded="false"><i class="mdi mdi-image-filter"></i><span class="hide-menu">Customers Gallery</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin_galleries.index') }}" aria-expanded="false"><i class="mdi mdi-image-filter"></i><span class="hide-menu">Customers Gallery</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('charts') }}" aria-expanded="false"><i class="mdi mdi-chart-histogram"></i><span class="hide-menu">Charts</span></a></li>
 
 
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Multi level dd</span></a>
@@ -374,6 +370,9 @@
     <script src="{{ asset('dist/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js')}}"></script>
+
+    @yield('scripts')
+
 </body>
 
 </html>
