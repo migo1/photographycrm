@@ -152,6 +152,8 @@
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('categories.index') }}" aria-expanded="false"><i class="mdi mdi-bookmark-check"></i><span class="hide-menu">Categories</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin_galleries.index') }}" aria-expanded="false"><i class="mdi mdi-image-filter"></i><span class="hide-menu">Customers Gallery</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('charts') }}" aria-expanded="false"><i class="mdi mdi-chart-histogram"></i><span class="hide-menu">Charts</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('sizes.index') }}" aria-expanded="false"><i class="mdi mdi-chart-histogram"></i><span class="hide-menu">Sizes </span></a></li>
+
 
 
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Multi level dd</span></a>

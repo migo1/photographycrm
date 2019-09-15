@@ -78,6 +78,16 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
                     <div class="card-body">
+
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                        </div><br />
+                        @endif
                             <div>
                                     <h4 class="card-title">photoshoot History<button type="button" class="btn btn-flat btn-sm btn-success float-right"  data-toggle="modal" data-target="#book">Book A photoshoot</button></h4>
                                 </div>
@@ -110,16 +120,18 @@
                                     <td class="font-weight-bold">
                                   
         
-                                      <button type="button" class="btn btn-sm btn-flat btn-info"
+                                    {{--  <button type="button" class="btn btn-sm btn-flat btn-info"
         
                                       data-mybid = "{{ $book->id }}"  data-myuid = "{{ $book->user_id }}" data-mycid = "{{ $book->category_id }}" 
 
-                                      data-mydate = "{{ $book->date }}" data-mytime = "{{ $book->time }}" data-myphoto = "{{ $book->total_photos }}"
-                                      data-mycharge = "{{ $book->charges }}"
+                                      data-mysid = "{{ $book->size_id }}" data-mydate = "{{ $book->date }}" data-mytime = "{{ $book->time }}" 
+
+                                      data-mycharge = "{{ $book->charges }}" data-myphoto = "{{ $book->total_photos }}"
 
         
-                                      data-toggle="modal" data-target="#edit_book">Edit</button>
-                                      
+                                      data-toggle="modal" data-target="#edit_book">Edit</button>--}}
+                                        <a href="#" class="btn btn-sm btn-flat btn-info">Checkout`</a>
+
                                       <button type="button" class="btn btn-sm btn-flat btn-danger"
                                       data-mybid = "{{ $book->id }}" 
                         
@@ -187,6 +199,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+    
         <form class="form-horizontal" method="POST" action="{{ route('bookings.store')}}">
         <div class="modal-body">
           @csrf
@@ -270,6 +283,7 @@
             var book_id = button.data('mybid')
             var user_id = button.data('myuid')
             var category_id = button.data('mycid')
+            var size_id = button.data('mysid')
             var date = button.data('mydate')
             var time = button.data('mytime')
             var total_photos = button.data('myphoto')
@@ -279,6 +293,7 @@
             modal.find('.modal-body #book_id').val(book_id)
             modal.find('.modal-body #user_id').val(user_id)
             modal.find('.modal-body #category_id').val(category_id)
+            modal.find('.modal-body #size_id').val(size_id)
             modal.find('.modal-body #date').val(date)
             modal.find('.modal-body #time').val(time)
             modal.find('.modal-body #total_photos').val(total_photos)

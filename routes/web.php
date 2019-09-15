@@ -61,4 +61,5 @@ Route::resource('admins_dashboard', 'Admin\DashboardController');
 Route::resource('categories', 'Admin\CategoryController');
 Route::resource('admin_galleries', 'Admin\GalleryController');
 Route::get('chart', 'ChartController@index')->name('charts');
+Route::resource('sizes', 'SizeController');
 

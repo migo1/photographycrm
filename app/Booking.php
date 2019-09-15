@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $fillable = [
-        'user_id', 'category_id', 'date', 'time', 
+        'user_id', 'category_id', 'size_id', 'date', 'time', 
         'total_photos', 'charges', 'payment_status'
     ];
 
@@ -18,5 +18,10 @@ class Booking extends Model
 
     public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    public function size()
+    {
+        return $this->belongsTo('App\Size');
     }
 }

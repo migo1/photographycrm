@@ -13,6 +13,19 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                        <label class="col-sm-3 text-right control-label col-form-label">Sizes :</label>
+                                        <div class="col-sm-9">
+        
+        
+                                            
+                                            <select class="form-control" name="size_id">
+                                                @foreach ( $size as $siz)
+                                            <option value="{{$siz->id}}">{{$siz->size}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 <input type="hidden" name="user_id" id="user_id">
                         <div class="form-group row">
                             <label  class="col-sm-3 text-right control-label col-form-label">Date:</label>

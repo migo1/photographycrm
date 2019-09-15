@@ -12,6 +12,6 @@ class Category extends Model
 
     public function bookings()
     {
-        return $this->hasMany('App\Category');
+        return $this->hasMany('App\Booking');
     }
 }

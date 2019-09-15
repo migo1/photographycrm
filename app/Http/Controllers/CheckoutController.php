@@ -2,20 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Booking;
-use App\Category;
 use Illuminate\Http\Request;
-use App\Profile;
-use App\User;
-use App\Size;
 
-class ProfileController extends Controller
+class CheckoutController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -55,17 +45,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        $prof = Profile::find($id);
-
-        $categories = Category::all();
-
-        $size= Size::all();
-
-        $bookings = Booking::orderBy('created_at','desc')->paginate(5);
-
-        return view('profiles.show', compact('user','categories','bookings','prof','size'))->with('i', (request()->input('page', 1) - 1) * 5);
+        //
     }
 
     /**
@@ -76,11 +56,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::find($id);
-
-        
-
-        return view('profiles.edit', compact('profile'));
+        //
     }
 
     /**
@@ -92,24 +68,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $profile = Profile::find($id);
-
-        $profile->user_id = auth()->user()->id;
-        $profile->contact = $request->input('contact');
-        $profile->bio = $request->input('bio');
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('public/cover_images', $filename);
-            $profile->image = $filename; 
-        }
-        $profile->address = $request->input('address');
-
-        $profile->update();
-
-        return back();
-
+        //
     }
 
     /**

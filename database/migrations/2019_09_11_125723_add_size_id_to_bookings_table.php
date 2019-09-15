@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSizesTable extends Migration
+class AddSizeIdToBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateSizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sizes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('size');
-            $table->float('amount');
-            $table->timestamps();
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->unsignedBigInteger('size_id')->after('category_id');
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
         });
     }
 
@@ -28,6 +26,8 @@ class CreateSizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sizes');
+        Schema::table('bookings', function (Blueprint $table) {
+            //
+        });
     }
 }
